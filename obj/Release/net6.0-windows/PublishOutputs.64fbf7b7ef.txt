@@ -1,0 +1,5 @@
+E:\Tijdelijk\Code\WPF\MusicPlayer\bin\Release_Test-Folder\net6.0-windows\publish\MusicPlayer.exe
+E:\Tijdelijk\Code\WPF\MusicPlayer\bin\Release_Test-Folder\net6.0-windows\publish\MusicPlayer.dll
+E:\Tijdelijk\Code\WPF\MusicPlayer\bin\Release_Test-Folder\net6.0-windows\publish\MusicPlayer.deps.json
+E:\Tijdelijk\Code\WPF\MusicPlayer\bin\Release_Test-Folder\net6.0-windows\publish\MusicPlayer.runtimeconfig.json
+E:\Tijdelijk\Code\WPF\MusicPlayer\bin\Release_Test-Folder\net6.0-windows\publish\MusicPlayer.pdb

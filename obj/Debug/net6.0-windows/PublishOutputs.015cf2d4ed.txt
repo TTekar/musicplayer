@@ -1,0 +1,11 @@
+E:\Tijdelijk\Code\WPF\MusicPlayer_2022-5-2\bin\publish\MusicPlayer.exe
+E:\Tijdelijk\Code\WPF\MusicPlayer_2022-5-2\bin\publish\MusicPlayer.dll
+E:\Tijdelijk\Code\WPF\MusicPlayer_2022-5-2\bin\publish\MusicPlayer.deps.json
+E:\Tijdelijk\Code\WPF\MusicPlayer_2022-5-2\bin\publish\MusicPlayer.runtimeconfig.json
+E:\Tijdelijk\Code\WPF\MusicPlayer_2022-5-2\bin\publish\MusicPlayer.pdb
+E:\Tijdelijk\Code\WPF\MusicPlayer_2022-5-2\bin\publish\DocumentFormat.OpenXml.dll
+E:\Tijdelijk\Code\WPF\MusicPlayer_2022-5-2\bin\publish\MediaToolkit.dll
+E:\Tijdelijk\Code\WPF\MusicPlayer_2022-5-2\bin\publish\Newtonsoft.Json.dll
+E:\Tijdelijk\Code\WPF\MusicPlayer_2022-5-2\bin\publish\NiL.JS.dll
+E:\Tijdelijk\Code\WPF\MusicPlayer_2022-5-2\bin\publish\NReco.VideoConverter.dll
+E:\Tijdelijk\Code\WPF\MusicPlayer_2022-5-2\bin\publish\libvideo.dll

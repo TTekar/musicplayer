@@ -1,0 +1,6 @@
+E:\Tijdelijk\Code\WPF\MusicPlayer_9-3-22 - kopie\bin\Newpublish\MusicPlayer.exe
+E:\Tijdelijk\Code\WPF\MusicPlayer_9-3-22 - kopie\bin\Newpublish\MusicPlayer.dll
+E:\Tijdelijk\Code\WPF\MusicPlayer_9-3-22 - kopie\bin\Newpublish\MusicPlayer.deps.json
+E:\Tijdelijk\Code\WPF\MusicPlayer_9-3-22 - kopie\bin\Newpublish\MusicPlayer.runtimeconfig.json
+E:\Tijdelijk\Code\WPF\MusicPlayer_9-3-22 - kopie\bin\Newpublish\MusicPlayer.pdb
+E:\Tijdelijk\Code\WPF\MusicPlayer_9-3-22 - kopie\bin\Newpublish\DocumentFormat.OpenXml.dll

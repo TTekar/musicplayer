@@ -1,0 +1,445 @@
+﻿<Window x:Class="MusicPlayer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MusicPlayer"
+        mc:Ignorable="d"
+        Height="360" Width="510" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None" 
+        ResizeMode="NoResize" 
+        AllowsTransparency="True" 
+        Background="#A8F9FF">
+    <Grid>
+
+        <Frame Height="50" VerticalAlignment="Top" Background="#56e0ff" MouseDown="Window_MouseDown"/>
+        <Button Width="40" Height="40" Background="#4769FF"  Content="➖" FontSize="25" Foreground="#000" VerticalAlignment="Top" 
+                HorizontalAlignment="Right" Margin="0,5,50,0" Click="btnClick_Min" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Width="40" Height="40" Content="❌" Background="#4769FF"  FontSize="25" Foreground="#000" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                Margin="0,5,5,0" Click="btnClick_Close" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Width="40" Height="40" Background="#4769FF"  FontSize="23" Foreground="#263174" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                Margin="5,5,0,0" Click="btnClick_OpenMusic" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+            <StackPanel Margin="-2,-3,0,0">
+                <Label  Content="📁" Width="46" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="45"/>
+            </StackPanel>
+        </Button>
+
+        <Button Content="🗑️" Width="40" Height="40" Background="#4769FF" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                Margin="50,5,0,0" Click="btnClick_ClearTrack">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+
+        <!--<Button  Width="40" Height="40" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="95,5,0,0" Click="btnClick_OpenSettigs">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Ellipse Stroke="Black"  
+                       StrokeThickness="0">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Offset=".3"  
+                                        Color="#4769FF" />
+                                    <GradientStop Offset=".7"  
+                                        Color="#728AFF" />
+                                    <GradientStop Offset=".9"  
+                                        Color="#7CACFF" />
+                                    <RadialGradientBrush.Transform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="0.95" />
+                                        </TransformGroup>
+                                    </RadialGradientBrush.Transform>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <ContentPresenter HorizontalAlignment="Center"  
+                                VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+            <StackPanel Margin="-2,-3,0,0">
+                <Label  Content="⚙️" Width="46" FontSize="24" Margin="-.5,-1,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="45"/>
+            </StackPanel>
+        </Button>-->
+
+        <ListBox x:Name="track_list" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                 Width="229" Height="204" Background="#66C6FF" Foreground="#0C0823" FontWeight="Bold" BorderBrush="#2631B2" BorderThickness="2" 
+                 HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="track_list_SelectedIndexChanged" Margin="276,55,0,0"/>
+
+
+        <MediaElement x:Name="mediaMusic" HorizontalAlignment="Left" Height="109" Margin="360,104,0,0" LoadedBehavior="Manual"
+                      MediaEnded="MusicStopped" MediaOpened="media_MediaOpened"  VerticalAlignment="Top" Width="106"/>
+
+
+
+
+
+
+        <Button x:Name="PlayAudioButton" Visibility="Visible" Foreground="#0C0823" FontWeight="ExtraBold" Background="#4769FF" Width="40" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="370,305,0,0" Click="btnClick_PlayAudio" MouseEnter="ButtonEnterEffectPlay" MouseLeave="ButtonLeaveEffectPlay">
+            <Image Source="Images\Play.png" Height="25" Width="15"></Image>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button x:Name="PauseAudioButton" Visibility="Collapsed" Foreground="#0C0823" FontWeight="ExtraBold" Background="#4769FF" Width="40" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="370,305,0,0" Click="btnClick_PlayAudio" MouseEnter="ButtonEnterEffectPlay" MouseLeave="ButtonLeaveEffectPlay">
+            <Image Source="Images\Pause.png" Height="25" Width="15"></Image>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button x:Name="NextButton" Width="40" Height="40" FontSize="20" VerticalAlignment="Top" Background="#4769FF" HorizontalAlignment="Left" Margin="420,304,0,0" Click="btnClick_NextAudio"  MouseEnter="ButtonEnterEffectNext" MouseLeave="ButtonLeaveEffectNext">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+            <Image Source="Images\NextPrev.png" Height="28" Width="17" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Button>
+
+
+
+        <Button x:Name="PrevButton" Width="40" Height="40" FontSize="20" Background="#4769FF" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="320,305,0,0" Click="btnClick_PrevAudio" MouseEnter="ButtonEnterEffectPrev" MouseLeave="ButtonLeaveEffectPrev">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+            <Image Source="Images\NextPrev.png" Height="28" Width="17"></Image>
+        </Button>
+
+
+
+
+        <Button x:Name="DropdownMenuButton" Margin="242,55,242,291" BorderThickness="0" Background="Transparent" Click="ToggleDropdown" 
+                MouseEnter="StartTriangleAnimation" MouseLeave="EndTriangleAnimation">
+            <Path x:Name="DropdownMenuTriangle" Fill="#181F42"  Data="M 0 6 L 12 6 L 6 0 Z" Height="12" RenderTransformOrigin="0.5,0.5" 
+                  Stretch="Fill" Width="25">
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+
+
+        <ListBox x:Name="playlist_list" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+             Width="122" Height="245" Background="#66C6FF" FontWeight="Bold" Foreground="#0C0823" BorderBrush="#2631B2" BorderThickness="2" 
+             HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="list_selection_changed" Margin="10,55,0,0"/>
+
+
+
+
+
+
+
+        <Button x:Name="ButtonPSettings" Width="40" Height="28" FontSize="13" Background="#4769FF" 
+                VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,308,0,0" 
+                Click="btnClick_OpenPlaylistSettings" MouseEnter="ButtonEnterEffectPSettings" 
+                MouseLeave="ButtonLeaveEffectPSettings">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="9"/>
+                </Style>
+            </Button.Resources>
+            <StackPanel>
+                <Label Content="⚙️" Width="35" FontSize="20" Margin="-1.5,-9.8,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="45"/>
+            </StackPanel>
+        </Button>
+
+
+
+
+        <Grid x:Name="DropdownMenu" Visibility="Collapsed" Margin="140,70,239,106" Background="#66C6FF">
+            <Border BorderThickness="1" BorderBrush="#2631B2" Margin="0,0,0,0"/>
+            <Label Content="Random" FontSize="15" FontWeight="Bold" Foreground="#26314A" Margin="-1,0,30,152"/>
+            <Grid x:Name="SwitchRandom" Margin="96,10,9,161" Width="25" MouseDown="SwitchRandomClick">
+                <Rectangle x:Name="BackgroundRec" Width="25" Height="12.5" Fill="#2631B2" RadiusY="6.25" RadiusX="6.25"/>
+                <Ellipse x:Name="MovingElipse" Width="10" Height="10" Fill="#4769FF" Margin="1,1,11.25,1" />
+            </Grid>
+
+            <Label Content="Loop" FontSize="15" FontWeight="Bold" Foreground="#26314A" Margin="-1,24,39,129"/>
+            <Grid x:Name="SwitchLoop" Margin="96,33,9,138" Width="25" MouseDown="SwitchLoopClick">
+                <Rectangle x:Name="BackgroundRecLoop" Width="25" Height="12.5" Fill="#2631B2" RadiusY="6.25" RadiusX="6.25"/>
+                <Ellipse x:Name="MovingElipseLoop" Width="10" Height="10" Fill="#4769FF" Margin="1,1,11.25,1" />
+            </Grid>
+
+            <Button Content="Mix" Width="40" Height="28" FontSize="13" Background="#4769FF" VerticalAlignment="Top" 
+                    HorizontalAlignment="Left" Margin="4,106,0,0" Click="btnClick_MixAudio">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Green"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="12"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Grid Margin="-1,-39,1,39">
+                <Label Content="Starting Volume %" FontSize="14" FontWeight="Bold" Foreground="#26314A" Margin="-1,84,-2,71"/>
+                <Slider x:Name="track_SetVolume" HorizontalAlignment="Left" Margin="3,122,0,0" Maximum="100" Minimum="0" 
+                VerticalAlignment="Top" Width="130" ValueChanged="track_SetVolume_ValueChanged" Value="0" Height="18" />
+                <Label x:Name="SetVolumeLabel" Content="0%" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" 
+               Foreground="#263174" FontFamily="Oswald" Margin="0,100,0,0" VerticalAlignment="Top" Height="30" Width="40"/>
+            </Grid>
+
+
+            <Button Width="30" Height="30" Content="💾" FontSize="23" Foreground="#0C0823" VerticalAlignment="Top" 
+                    HorizontalAlignment="Right" Margin="0,152,1,0" Click="btnClick_SaveSettings" Background="Transparent" >
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Green"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Transparent"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
+
+
+        <Slider x:Name="musicProgression" PreviewMouseLeftButtonUp="sliderSeek_PreviewMouseLeftButtonUp" ValueChanged="sliderSeek_ValueChanged" HorizontalAlignment="Left"
+                Margin="270,281,0,0" VerticalAlignment="Top" Width="240" />
+
+        <TextBlock x:Name="Duration" Text="0 : 00" TextAlignment="Center" Foreground="#0C0823" FontWeight="Bold" FontSize="18" Margin="362,257,92,79"/>
+
+        <Slider x:Name="track_volume" HorizontalAlignment="Center" Margin="0,74,0,0" Maximum="100" Minimum="0" 
+                VerticalAlignment="Top" Width="18" ValueChanged="track_volume_ValueChanged" Height="166" Orientation="Vertical" />
+        <Label x:Name="VolumeLabel" Content="00%" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" 
+               Foreground="#0C0823" FontFamily="Oswald" Margin="238,235,0,0" VerticalAlignment="Top" Height="29" Width="40"/>
+
+        <!--<Image Visibility="Visible" Source="Images/music-logo.png" Width="100" Height="100" Margin="194,68,216,192" />-->
+        <Label x:Name="CreditsText" Visibility="Visible" Content="Made by Tekar" Margin="0,341,448,-1" FontFamily="Roboto" 
+               FontSize="8" Foreground="#56E0FF"/>
+
+
+        <Border x:Name="BorderMainWindow" BorderBrush="#181F42" Visibility="Collapsed" BorderThickness="2"/>
+
+
+
+
+    </Grid>
+</Window>

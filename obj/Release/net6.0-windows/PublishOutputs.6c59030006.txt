@@ -1,0 +1,5 @@
+E:\Tijdelijk\Code\WPF\MusicPlayer\bin\OneClick_28-2-22_pub\MusicPlayer.exe
+E:\Tijdelijk\Code\WPF\MusicPlayer\bin\OneClick_28-2-22_pub\MusicPlayer.dll
+E:\Tijdelijk\Code\WPF\MusicPlayer\bin\OneClick_28-2-22_pub\MusicPlayer.deps.json
+E:\Tijdelijk\Code\WPF\MusicPlayer\bin\OneClick_28-2-22_pub\MusicPlayer.runtimeconfig.json
+E:\Tijdelijk\Code\WPF\MusicPlayer\bin\OneClick_28-2-22_pub\MusicPlayer.pdb

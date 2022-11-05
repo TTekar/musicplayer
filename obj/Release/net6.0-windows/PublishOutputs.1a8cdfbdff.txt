@@ -1,0 +1,6 @@
+E:\Tijdelijk\Code\WPF\MusicPlayer_9-3-2022\bin\testpub\MusicPlayer.exe
+E:\Tijdelijk\Code\WPF\MusicPlayer_9-3-2022\bin\testpub\MusicPlayer.dll
+E:\Tijdelijk\Code\WPF\MusicPlayer_9-3-2022\bin\testpub\MusicPlayer.deps.json
+E:\Tijdelijk\Code\WPF\MusicPlayer_9-3-2022\bin\testpub\MusicPlayer.runtimeconfig.json
+E:\Tijdelijk\Code\WPF\MusicPlayer_9-3-2022\bin\testpub\MusicPlayer.pdb
+E:\Tijdelijk\Code\WPF\MusicPlayer_9-3-2022\bin\testpub\DocumentFormat.OpenXml.dll
