@@ -1,2 +1,2 @@
-# musicplayer
- Simple WPF music player
+# Musicplayer
+Simple WPF music player
