@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using System.Timers;
 using System.Threading;
+using System.Diagnostics;
 
 
 //  Made by Tekar
@@ -43,8 +44,8 @@ namespace MusicPlayer
                 }
                 var playlistAdd = file.Split("\\").Last();
                 playlistAdd = playlistAdd.Substring(0, playlistAdd.LastIndexOf("."));
-                playlist_list.Items.Add($"Playlist {Int32.Parse(playlistAdd) + 1}");
-
+                //playlist_list.Items.Add($"Playlist {Int32.Parse(playlistAdd) + 1}");
+                playlist_list.Items.Add(playlistAdd);
             }
 
             BorderMainWindow.Visibility = Visibility.Visible;
@@ -118,7 +119,8 @@ namespace MusicPlayer
                 }
                 var playlistAdd = file.Split("\\").Last();
                 playlistAdd = playlistAdd.Substring(0, playlistAdd.LastIndexOf("."));
-                playlist_list.Items.Add($"Playlist {Int32.Parse(playlistAdd) + 1}");
+                //playlist_list.Items.Add($"Playlist {Int32.Parse(playlistAdd) + 1}");
+                playlist_list.Items.Add(playlistAdd);
 
             }
 
@@ -155,12 +157,19 @@ namespace MusicPlayer
             var timer = new System.Timers.Timer { Interval = 1000 }; // in milliseconds
             timer.Elapsed += (s, e) =>
             {
-                this.Dispatcher.Invoke(() =>
+                try
                 {
-                    if (mediaMusic.Position == mediaMusic.NaturalDuration)
-                        timer.Stop();
-                    do1();
-                });
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        if (mediaMusic.Position == mediaMusic.NaturalDuration)
+                            timer.Stop();
+                        do1();
+                    });
+                }catch
+                {
+
+                }
+                
             };
 
             void do1()
@@ -260,7 +269,7 @@ namespace MusicPlayer
             }
 
             mediaMusic.Stop();
-            TextReader trP1 = new StreamReader($"data/Playlists/{currentPlaylist}.txt");
+            TextReader trP1 = new StreamReader($"data/Playlists/{playlist_list.Items[currentPlaylist]}.txt");
             readP1 = trP1.ReadLine();
             track_list.Items.Clear();
 
@@ -316,23 +325,31 @@ namespace MusicPlayer
 
         private void btnClick_NextAudio(object sender, RoutedEventArgs e)
         {
-            
-            if (track_list.SelectedIndex < track_list.Items.Count - 1)
+            if (ShufflePlaylist == true)
             {
-                track_list.SelectedIndex = track_list.SelectedIndex + 1;
-            }
-            else if (track_list.SelectedIndex == track_list.Items.Count - 1)
+                PlayNextShuffle();
+            }else
             {
-                track_list.SelectedIndex = 0;
+                if (track_list.SelectedIndex < track_list.Items.Count - 1)
+                {
+                    track_list.SelectedIndex = track_list.SelectedIndex + 1;
+                }
+                else if (track_list.SelectedIndex == track_list.Items.Count - 1)
+                {
+                    track_list.SelectedIndex = 0;
+                }
             }
-            
         }
 
 
         private void track_list_SelectedIndexChanged(object sender, RoutedEventArgs e)
         {
-            mediaMusic.Source = new Uri(paths[track_list.SelectedIndex]);
-            mediaMusic.Play();
+            if (track_list.SelectedIndex != -1)
+            {
+                mediaMusic.Source = new Uri(paths[track_list.SelectedIndex]);
+                mediaMusic.Play();
+            }
+            
         }
 
 
@@ -400,8 +417,11 @@ namespace MusicPlayer
                 w--;
                 int u = r.Next(w + 1);
                 object value = track_list.Items[u];
+                object valuePaths = paths[u];
                 track_list.Items[u] = track_list.Items[w];
+                paths[u] = paths[w];
                 track_list.Items[w] = value;
+                paths[w] = (string)valuePaths;
             }
         }
 
@@ -566,8 +586,56 @@ namespace MusicPlayer
 
         
 
+        int listIndex = 0;
+        int[] shuffledList;
+
+        private void PlayNextShuffle()
+        {
+            if (listIndex != 0)
+            {
+                if (listIndex < shuffledList.Length - 1)
+                {
+                    track_list.SelectedIndex = shuffledList[listIndex];
+                    listIndex++;
+                }
+                else if (listIndex == shuffledList.Length - 1)
+                {
+                    Shuffle(shuffledList);
+                    listIndex = 0;
+                    track_list.SelectedIndex = shuffledList[listIndex];
+                    listIndex++;
+                }
+                mediaMusic.Play();
+            }
+            else
+            {
+                shuffledList = new int[track_list.Items.Count];
+
+                for (int i = 0; i < shuffledList.Length; i++)
+                {
+                    shuffledList[i] = i;
+                }
+
+                Shuffle(shuffledList);
+
+                if (listIndex < shuffledList.Length - 1)
+                {
+                    track_list.SelectedIndex = shuffledList[listIndex];
+                    listIndex++;
+                }
+                else if (listIndex == shuffledList.Length - 1)
+                {
+                    Shuffle(shuffledList);
+                    listIndex = 0;
+                    track_list.SelectedIndex = shuffledList[listIndex];
+                    listIndex++;
+                }
+            }
+        }
+
         private void MusicStopped(object sender, RoutedEventArgs e)
         {
+            
 
             if (loopThisAudio)
             {
@@ -576,11 +644,7 @@ namespace MusicPlayer
                 mediaMusic.Play();
             }else if (ShufflePlaylist)
             {
-                Random r = new Random();
-                int randomSong = r.Next(0, track_list.Items.Count);
-                mediaMusic.Source = new Uri(paths[randomSong], UriKind.Relative);
-                track_list.SelectedIndex = randomSong;
-                mediaMusic.Play();
+                PlayNextShuffle();
             }
             else
             {
@@ -595,6 +659,28 @@ namespace MusicPlayer
             }
 
             
+        }
+
+        private void CreditsText_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Diagnostics.Process.Start(new ProcessStartInfo
+            {
+                FileName = "https://tekar.tk",
+                UseShellExecute = true
+            });
+        }
+
+        public static void Shuffle(int[] array)
+        {
+            var rng = new Random();
+            int n = array.Length;
+            while (n > 1)
+            {
+                int k = rng.Next(n--);
+                int temp = array[n];
+                array[n] = array[k];
+                array[k] = temp;
+            }
         }
 
 

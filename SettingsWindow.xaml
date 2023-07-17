@@ -147,7 +147,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="Delete&#10;  Last" Width="50" Height="30" FontSize="11" 
+        <Button Content="Delete" Width="50" Height="30" FontSize="13" 
             Background="#4769FF" VerticalAlignment="Top" FontWeight="Bold"
             HorizontalAlignment="Left" Margin="68,60,0,0" Click="btnClick_DeletePlaylist">
             <Button.Style>

@@ -433,7 +433,7 @@
 
         <!--<Image Visibility="Visible" Source="Images/music-logo.png" Width="100" Height="100" Margin="194,68,216,192" />-->
         <Label x:Name="CreditsText" Visibility="Visible" Content="Made by Tekar" Margin="0,341,448,-1" FontFamily="Roboto" 
-               FontSize="8" Foreground="#56E0FF"/>
+               FontSize="8" Foreground="#56E0FF" MouseDown="CreditsText_MouseDown"/>
 
 
         <Border x:Name="BorderMainWindow" BorderBrush="#181F42" Visibility="Collapsed" BorderThickness="2"/>
